@@ -6,7 +6,7 @@ def get_weather(latitude, longitude):
     current, units = data['current'], data["current_units"]
     return current, units
 def find_city(name):
-     r = requests.get("https://geocoding-api.open-meteo.com/v1/search", params={"name": name, "count": 1})
+     r = requests.get("https://geocoding-api.open-meteo.com/v1/search", params={"name": name, "count": 1}, timeout=10)
      data = r.json()
      if "results" not in data:
         raise ValueError("City not found")
